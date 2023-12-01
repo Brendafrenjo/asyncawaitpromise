@@ -22,6 +22,13 @@ export default function CallBacks() {
     }, 1000);
   }
 
+  function createPost(post, callback) {
+    setTimeout(() => {
+      posts.push(post);
+      callback();
+    }, 2000);
+  }
+
   const users = [
     {
       name: "Midlred",
@@ -45,10 +52,17 @@ export default function CallBacks() {
     }, 1000);
   }
 
+  function createName(name) {}
+
   return (
     <div>
-      <h1>{getPosts}</h1>
       <p>{getNames}</p>
+      <p>
+        {createPost(
+          { title: "Post Three", body: "This os post three" },
+          getPosts
+        )}
+      </p>
     </div>
   );
 }
