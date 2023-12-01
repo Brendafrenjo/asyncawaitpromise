@@ -42,7 +42,7 @@ export default function CallBacks() {
     },
   ];
 
-  function getNames() {
+  function getUsers() {
     setTimeout(() => {
       let output = "";
       users.map((user, index) => {
@@ -52,17 +52,22 @@ export default function CallBacks() {
     }, 1000);
   }
 
-  function createName(name) {}
+  function createUser(user, callback) {
+    setTimeout(() => {
+        users.push(user);
+        callback();
+    }, 2000);
+  }
 
   return (
     <div>
-      <p>{getNames}</p>
       <p>
         {createPost(
           { title: "Post Three", body: "This os post three" },
           getPosts
         )}
       </p>
+      <p>{createUser({ name: "Brenda", age: 31, sex: "female" }, getUsers)}</p>
     </div>
   );
 }
