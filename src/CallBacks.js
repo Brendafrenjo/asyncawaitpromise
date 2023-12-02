@@ -72,15 +72,17 @@ export default function CallBacks() {
 
   function getPosts() {
     setTimeout(() => {
-      output = "",
+      (output = ""),
         posts.map((post, index) => {
-          return (
-            <li key={index}>
-              {post}
-            </li>
-          )
-        })
-    }, 1000)
+          return (output = +(<li key={index}>{post.Title}</li>));
+        });
+    }, 1000);
+  }
+
+  function createPost(post, ) {
+    setTimeout(() => {
+      post.push({Title: "Work", Content: "I enjoy my work"})
+    }, 2000)
   }
 
   return (
