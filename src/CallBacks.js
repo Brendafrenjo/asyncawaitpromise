@@ -54,9 +54,33 @@ export default function CallBacks() {
 
   function createUser(user, callback) {
     setTimeout(() => {
-        users.push(user);
-        callback();
+      users.push(user);
+      callback();
     }, 2000);
+  }
+
+  const posts = [
+    {
+      Title: "Home",
+      Content: "This is my home",
+    },
+    {
+      Title: "School",
+      Content: "I went to school",
+    },
+  ];
+
+  function getPosts() {
+    setTimeout(() => {
+      output = "",
+        posts.map((post, index) => {
+          return (
+            <li key={index}>
+              {post}
+            </li>
+          )
+        })
+    }, 1000)
   }
 
   return (
