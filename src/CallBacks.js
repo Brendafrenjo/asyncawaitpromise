@@ -59,32 +59,6 @@ export default function CallBacks() {
     }, 2000);
   }
 
-  const posts = [
-    {
-      Title: "Home",
-      Content: "This is my home",
-    },
-    {
-      Title: "School",
-      Content: "I went to school",
-    },
-  ];
-
-  function getPosts() {
-    setTimeout(() => {
-      (output = ""),
-        posts.map((post, index) => {
-          return (output = +(<li key={index}>{post.Title}</li>));
-        });
-    }, 1000);
-  }
-
-  function createPost(post, ) {
-    setTimeout(() => {
-      post.push({Title: "Work", Content: "I enjoy my work"})
-    }, 2000)
-  }
-
   return (
     <div>
       <p>
