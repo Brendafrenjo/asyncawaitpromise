@@ -22,11 +22,20 @@ export default function CallBacks() {
     }, 1000);
   }
 
-  function createPost(post, callback) {
-    setTimeout(() => {
-      posts.push(post);
-      callback();
-    }, 2000);
+  function createPost(post) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        posts.push(post);
+
+        let error = false;
+
+        if (!error) {
+          resolve();
+        } else {
+          reject("Error: Something went wrong!");
+        }
+      }, 2000);
+    });
   }
 
   const users = [
@@ -52,22 +61,31 @@ export default function CallBacks() {
     }, 1000);
   }
 
-  function createUser(user, callback) {
-    setTimeout(() => {
-      users.push(user);
-      callback();
-    }, 2000);
+  function createUser(user) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        users.push(user);
+
+        let error = false;
+
+        if (!error) {
+          resolve();
+        } else {
+          reject("Error! Something went wrong!");
+        }
+      }, 2000);
+    });
   }
+
+  createPost({ title: "Post Three", body: "This os post three" }).then(
+    getPosts
+  );
+  createUser({ name: "Brenda", age: 31, sex: "female" }).then(getUsers);
 
   return (
     <div>
-      <p>
-        {createPost(
-          { title: "Post Three", body: "This os post three" },
-          getPosts
-        )}
-      </p>
-      <p>{createUser({ name: "Brenda", age: 31, sex: "female" }, getUsers)}</p>
+      <p></p>
+      <p></p>
     </div>
   );
 }
