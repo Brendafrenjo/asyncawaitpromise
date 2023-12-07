@@ -55,7 +55,7 @@ export default function CallBacks() {
     setTimeout(() => {
       let output = "";
       users.map((user, index) => {
-        return (output = +(<li key={index}>{user.name}</li>));
+        return (output += <li key={index}>{user.name}</li>);
       });
       document.body.innerHTML = output;
     }, 1000);
