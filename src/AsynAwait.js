@@ -52,10 +52,28 @@ export default function AsynAwait() {
     fetchPosts();
   }, []);
 
+  async function handlePosts() {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+
+    const data = await res.json();
+
+    const output = data
+      .map((user, index) => {
+        return `<p key=${index}>Name: ${user.name} <br /> Username: ${user.username} <br /> Email: ${user.email} <br /> Adress: ${user.address.street} <br /> ${user.address.suite} <br /> ${user.address.city}</p>`;
+      })
+      .join("");
+
+    let body = document.querySelector("#people");
+    body.innerHTML = output;
+  }
+
+  handlePosts();
+
   return (
     <div>
       <h1>Async Await</h1>
       <p id="content"></p>
+      <p id="people"></p>
     </div>
   );
 }
