@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import AsynAwait from "./AsynAwait";
 
 export default function Promises() {
   let users = [
@@ -52,6 +53,7 @@ export default function Promises() {
     <div>
       <h1>List of Users</h1>
       <div id="main"></div>
+      <AsynAwait />
     </div>
   );
 }
