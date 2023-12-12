@@ -41,12 +41,14 @@ export default function Promises() {
     });
   }
 
+  createUser({
+    name: "Lucia Masu",
+    age: 31,
+    email: "luciamasu@gmail.com",
+  });
+
   useEffect(() => {
-    createUser({
-      name: "Lucia Masu",
-      age: 31,
-      email: "luciamasu@gmail.com",
-    }).then(getUsers);
+    getUsers();
   }, []);
 
   return (
