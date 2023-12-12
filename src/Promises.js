@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Promises() {
   let users = [
@@ -15,12 +15,11 @@ export default function Promises() {
   ];
 
   function getUsers() {
-    setTimeout(() => {
-      let output = "";
-      users.map((user, key) => {
-        output += `<p key=${index}>Name: ${user}</p>`;
-      });
-    }, 1000);
+    let output = users
+      .map((user, index) => {
+        return `<p key=${index}>Name: ${user.name} <br /> Age: ${user.age} <br /> Email: ${user.email}</p>`;
+      })
+      .join("");
     let body = document.querySelector("#main");
     body.innerHTML = output;
   }
@@ -41,15 +40,18 @@ export default function Promises() {
     });
   }
 
-  createUser({
-    name: "Lucia Masu",
-    age: 31,
-    emial: "luciamasu@gmail.com",
-  }).then(getUsers);
+  useEffect(() => {
+    createUser({
+      name: "Lucia Masu",
+      age: 31,
+      email: "luciamasu@gmail.com",
+    }).then(getUsers);
+  }, []);
 
   return (
     <div>
-      <h1></h1>
+      <h1>List of Users</h1>
+      <div id="main"></div>
     </div>
   );
 }

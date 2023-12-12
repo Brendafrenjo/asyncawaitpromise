@@ -1,10 +1,10 @@
 import React from "react";
-import CallBacks from "./CallBacks";
+import Promises from "./Promises";
 
 export default function Home() {
     return (
         <div>
-            <CallBacks />
+            <Promises />
         </div>
     )
 }
