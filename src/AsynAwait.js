@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function AsynAwait() {
-  const posts = [
+  const [posts, setPosts] = useState([
     {
       post: "Post One",
       content: "This is post one",
@@ -12,7 +12,7 @@ export default function AsynAwait() {
       content: "This is post two",
       writer: "Nyala Rod",
     },
-  ];
+  ]);
 
   function getPosts() {
     let output = posts
@@ -26,8 +26,8 @@ export default function AsynAwait() {
 
   function createPost(post) {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        posts.push(post);
+        setTimeout(() => {
+          setPosts((prevPosts) => [...prevPosts, post])
 
         const error = false;
 
@@ -73,6 +73,7 @@ export default function AsynAwait() {
     <div>
       <h1>Async Await</h1>
       <p id="content"></p>
+      <h1>People</h1>
       <p id="people"></p>
     </div>
   );
