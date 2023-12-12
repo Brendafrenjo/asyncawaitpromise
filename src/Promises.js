@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import AsynAwait from "./AsynAwait";
 
 export default function Promises() {
-  const [users, setUsers] = useState([
+  let users = [
     {
       name: "Bella Rose",
       age: 23,
@@ -13,7 +13,7 @@ export default function Promises() {
       age: 33,
       email: "luccaress@gmail.com",
     },
-  ]);
+  ];
 
   function getUsers() {
     let output = users
@@ -28,7 +28,7 @@ export default function Promises() {
   function createUser(user) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        setUsers((prevUsers) => [...prevUsers, user]);
+        users.push(user);
 
         const error = false;
 
@@ -41,14 +41,12 @@ export default function Promises() {
     });
   }
 
-  createUser({
-    name: "Lucia Masu",
-    age: 31,
-    email: "luciamasu@gmail.com",
-  });
-
   useEffect(() => {
-    getUsers();
+    createUser({
+      name: "Lucia Masu",
+      age: 31,
+      email: "luciamasu@gmail.com",
+    }).then(getUsers);
   }, []);
 
   return (
