@@ -2,6 +2,47 @@ import React, { useEffect } from "react";
 import AsynAwait from "./AsynAwait";
 
 export default function Promises() {
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const evens = numbers.filter(isEven);
+
+  function isEven(value) {
+    return value % 2 === 0;
+  }
+
+  console.log(evens);
+
+  const words = [
+    "exuberant",
+    "exit",
+    "happy",
+    "interesting",
+    "extravagant",
+    "mode",
+  ];
+
+  const results = words.filter((word) => word.length > 6);
+
+  console.log(results);
+
+  const people = [
+    {
+      name: "Brenda",
+      age: 13,
+    },
+    {
+      name: "Lucy",
+      age: 21,
+    },
+    {
+      name: "Grace",
+      age: 18,
+    },
+  ];
+
+  const adult = people.filter((person) => person.age >= 18);
+
+  console.log(adult);
+
   let users = [
     {
       name: "Bella Rose",
