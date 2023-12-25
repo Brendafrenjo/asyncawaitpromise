@@ -22,5 +22,18 @@ function handleCart(state = cart, action) {
           },
         ];
       }
+
+    case "DELETE_ITEM":
+      //find if product to be deleted exists
+      const productToDeleteExists = state.find((x) => x.id === product.id);
+      //if product to be deleted is one in quantity, remove the product from state
+      if (productToDeleteExists.qty === 1) {
+        return state.filter((x) => x.id !== productToDeleteExists.id);
+      } else {
+        //If the quantity is greater than 1, decrement the quantity
+        const updatedState = state.map((x) =>
+          x.id === product.id ? { ...x, qty: x.qty - 1 } : x
+        );
+      }
   }
 }
