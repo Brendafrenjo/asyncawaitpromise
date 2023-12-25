@@ -14,7 +14,7 @@ function handleCart(state = cart, action) {
       } else {
         // Create a new state array by spreading the existing items
         // and adding a new item with quantity 1
-        const updatedState = [
+        return [
           ...state,
           {
             ...product,
@@ -31,7 +31,7 @@ function handleCart(state = cart, action) {
         return state.filter((x) => x.id !== productToDeleteExists.id);
       } else {
         //If the quantity is greater than 1, decrement the quantity
-        const updatedState = state.map((x) =>
+        return state.map((x) =>
           x.id === product.id ? { ...x, qty: x.qty - 1 } : x
         );
       }
