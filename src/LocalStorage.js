@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LocalStorage.css";
 
 export default function LocalStorage() {
@@ -7,6 +7,14 @@ export default function LocalStorage() {
     lastName: "",
     email: "",
   });
+
+  // Load data from localStorage on component mount
+  useEffect(() => {
+    const storedData = localStorage.getItem("formData");
+    if (storedData) {
+      setFormData(JSON.parse(storedData));
+    }
+  }, []);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -26,7 +34,14 @@ export default function LocalStorage() {
       alert("All fields are required");
       return;
     }
-    console.log("Form data submitted:", formData);
+
+    // Save data to localStorage
+    localStorage.setItem("formData", JSON.stringify(formData));
+
+    console.log("Information submitted:", formData);
+    console.log(localStorage);
+
+    // Clear form data after submission
     setFormData({
       firstName: "",
       lastName: "",
