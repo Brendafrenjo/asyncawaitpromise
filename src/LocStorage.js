@@ -11,9 +11,11 @@ export default function LocStorage() {
           id="inlineFormCustomSelectPref"
         >
           <option selected>Student age</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          {Array.from({ length: 36 }, (_, index) => (
+            <option key={index} value={index + 15}>
+              {index + 15}
+            </option>
+          ))}
         </select>
         <input type="text" />
       </form>
