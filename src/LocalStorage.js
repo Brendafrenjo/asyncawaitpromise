@@ -32,7 +32,7 @@ export default function LocalStorage() {
       formData.firstName.trim() === "" ||
       formData.lastName.trim() === "" ||
       formData.email.trim() === "" ||
-      formData.age.trim() === "" || 
+      formData.age.trim() === "" ||
       formData.roll.trim() === ""
     ) {
       alert("All fields are required");
@@ -44,6 +44,8 @@ export default function LocalStorage() {
 
     console.log("Information submitted:", formData);
     console.log(localStorage);
+
+    // Set the entire form data as the message
 
     // Clear form data after submission
     setFormData({
@@ -102,15 +104,15 @@ export default function LocalStorage() {
           value={formData.age}
         >
           <option selected>Student age</option>
-          {Array.from({ length: 36 }, (_, index) => (
-            <option key={index} value={index + 15}>
-              {index + 15}
+          {Array.from({ length: 101 }, (_, index) => (
+            <option key={index} value={index + 0}>
+              {index + 0}
             </option>
           ))}
         </select>
         <label htmlFor="email">Roll Number:</label>
         <input
-          type="text"
+          type="number"
           id="roll"
           name="roll"
           placeholder="Student's roll"
@@ -122,6 +124,7 @@ export default function LocalStorage() {
           Add Student
         </button>
       </form>
+      <div className="student"></div>
       <br />
       <br />
     </div>
