@@ -1,12 +1,10 @@
 import React from "react";
 import Promises from "./Promises";
-import LocalStorage from "./LocalStorage";
-import LocStorage from "./LocStorage";
+import LocalStorage from "./LocalStorage"
 
 export default function Home() {
   return (
     <div>
-      <LocStorage />
       <LocalStorage />
       <Promises />
     </div>
