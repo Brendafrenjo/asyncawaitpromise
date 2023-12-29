@@ -86,11 +86,35 @@ export default function LocalStorage() {
         <small id="emailHelp" className="form-text text-muted">
           We'll never share your email with anyone else.
         </small>
-        <br />
+        <br/>
+        <label htmlFor="email">Age:</label>
+        <select
+          className="custom-select my-1 mr-sm-2 form-control info-form"
+          id="inlineFormCustomSelectPref"
+        >
+          <option selected>Student age</option>
+          {Array.from({ length: 36 }, (_, index) => (
+            <option key={index} value={index + 15}>
+              {index + 15}
+            </option>
+          ))}
+        </select>
+        <label htmlFor="email">Roll Number:</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Student's roll"
+          className="form-control info-form"
+          onChange={handleChange}
+          value={formData.roll}
+        />
         <button type="submit" className="btn btn-success mt-2">
-          Submit
+          Add Student
         </button>
       </form>
+      <br />
+      <br />
     </div>
   );
 }
