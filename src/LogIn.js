@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./LogIn.css";
 
 export default function LogIn() {
   const [formData, setFormData] = useState({ firstName: "", password: "" });
@@ -32,10 +33,10 @@ export default function LogIn() {
   }
 
   return (
-    <div onSubmit={handleSubmit}>
+    <div className="LogIn">
       <h1 className="mt-5">Log In</h1>
       {submitInfo && <p>Information submitted successfully</p>}
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="firstName"
