@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function LogInForm() {
   const [formData, setFormData] = useState({ firstName: "", password: "" });
   const [formInfo, setFormInfo] = useState(false);
 
   function handleChange(e) {
-    e.preventDefault();
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   }
 
   function handleSubmit() {
-    if (firstName && password) {
+    if (formData.firstName && formData.password) {
       setFormInfo(true);
     } else {
       alert("Provide all relevant information");
@@ -17,9 +21,9 @@ export default function LogInForm() {
   }
 
   return (
-    {formInfo && "Information Sucessfully submitted"}
     <div>
       <h1>Log In Form</h1>
+      {formInfo && "Information Sucessfully submitted"}
       <form onSubmit={handleSubmit}>
         <input
           type="firstName"
