@@ -3,3 +3,8 @@
   display: block;
   margin: 0 auto;
 }
+
+.password-toggle-icon {
+  font-size: 15px;
+  color: black;
+}

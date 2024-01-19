@@ -33,6 +33,10 @@ export default function LogIn() {
     }
   }
 
+  function toggleVisibilityChange() {
+    setShowPassword({ ...formData, showPassword: !formData.showPassword });
+  }
+
   return (
     <div className="LogIn">
       <h1 className="mt-5">Log In</h1>
@@ -55,13 +59,21 @@ export default function LogIn() {
           onChange={handleChange}
         />
         <span
-          className={`${formData.showPassword ? "hidden" : "visible"}`}
+          className={`password-toggle-icon ${
+            formData.showPassword ? "visible" : "hidden"
+          }`}
           onClick={toggleVisibilityChange}
         >
           {formData.showPassword ? (
-            <i className="fa-solid fa-eye fa-shake"></i>
+            <>
+              <i className="fa-solid fa-eye fa-shake"></i>
+              <span>Hide password</span>
+            </>
           ) : (
-            <i className="fa-solid fa-eye-slash fa-beat"></i>
+            <>
+              <i className="fa-solid fa-eye-slash fa-beat"></i>
+              <span>Show password</span>
+            </>
           )}
         </span>
         <button type="submit" className="btn btn-warning form-control">
