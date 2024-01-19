@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import "./LogIn.css";
 
 export default function LogIn() {
-  const [formData, setFormData] = useState({ firstName: "", password: "" });
+  const [formData, setFormData] = useState({
+    firstName: "",
+    password: "",
+    showPassword: false,
+  });
   const [submitInfo, setSubmitInfo] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
 
   function handleChange(e) {
-    const [name, value] = e.target;
+    const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
+  function handleSubmit() {
     const { firstName, password } = formData;
 
     if (firstName && password) {
@@ -34,14 +35,14 @@ export default function LogIn() {
   }
 
   function toggleVisibilityChange() {
-    setShowPassword({ ...formData, showPassword: !formData.showPassword });
+    setFormData({ ...formData, showPassword: !formData.showPassword });
   }
 
   return (
     <div className="LogIn">
       <h1 className="mt-5">Log In</h1>
       {submitInfo && <p>Information submitted successfully</p>}
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           type="text"
           name="firstName"
@@ -67,16 +68,20 @@ export default function LogIn() {
           {formData.showPassword ? (
             <>
               <i className="fa-solid fa-eye fa-shake"></i>
-              <span>Hide password</span>
+              <span className="ms-2">Hide password</span>
             </>
           ) : (
             <>
               <i className="fa-solid fa-eye-slash fa-beat"></i>
-              <span>Show password</span>
+              <span className="ms-2">Show password</span>
             </>
           )}
         </span>
-        <button type="submit" className="btn btn-warning form-control">
+        <button
+          type="submit"
+          className="btn btn-warning form-control mt-2"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
       </form>
