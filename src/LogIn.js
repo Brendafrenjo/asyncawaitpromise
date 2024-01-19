@@ -47,18 +47,23 @@ export default function LogIn() {
           onChange={handleChange}
         />
         <input
-          type={showPassword ? "text" : "password"}
+          type={formData.showPassword ? "text" : "password"}
           name="password"
           id="passwordInput"
           className="mb-1 form-control"
           value={formData.password}
           onChange={handleChange}
         />
-        {showPassword ? (
-          <i class="fa-solid fa-eye fa-shake"></i>
-        ) : (
-          <i class="fa-solid fa-eye-slash fa-beat"></i>
-        )}
+        <span
+          className={`${formData.showPassword ? "hidden" : "visible"}`}
+          onClick={toggleVisibilityChange}
+        >
+          {formData.showPassword ? (
+            <i className="fa-solid fa-eye fa-shake"></i>
+          ) : (
+            <i className="fa-solid fa-eye-slash fa-beat"></i>
+          )}
+        </span>
         <button type="submit" className="btn btn-warning form-control">
           Submit
         </button>
