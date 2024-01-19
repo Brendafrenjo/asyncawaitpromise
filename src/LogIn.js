@@ -4,6 +4,7 @@ import "./LogIn.css";
 export default function LogIn() {
   const [formData, setFormData] = useState({ firstName: "", password: "" });
   const [submitInfo, setSubmitInfo] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleChange(e) {
     const [name, value] = e.target;
@@ -46,13 +47,18 @@ export default function LogIn() {
           onChange={handleChange}
         />
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           name="password"
           id="passwordInput"
           className="mb-1 form-control"
           value={formData.password}
           onChange={handleChange}
         />
+        {showPassword ? (
+          <i class="fa-solid fa-eye fa-shake"></i>
+        ) : (
+          <i class="fa-solid fa-eye-slash fa-beat"></i>
+        )}
         <button type="submit" className="btn btn-warning form-control">
           Submit
         </button>
