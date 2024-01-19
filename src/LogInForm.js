@@ -4,6 +4,7 @@ import "./LogInForm.css";
 export default function LogInForm() {
   const [formData, setFormData] = useState({ firstName: "", password: "" });
   const [formInfo, setFormInfo] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -13,12 +14,18 @@ export default function LogInForm() {
     });
   }
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
+
     if (formData.firstName && formData.password) {
       setFormInfo(true);
     } else {
       alert("Provide all relevant information");
     }
+  }
+
+  function toggleVisibilityChange() {
+    setShowPassword(true);
   }
 
   return (
@@ -27,21 +34,27 @@ export default function LogInForm() {
       {formInfo && "Information Sucessfully submitted"}
       <form onSubmit={handleSubmit}>
         <input
-          type="firstName"
+          type="text"
           id="firstName"
           className="firstName form-control mb-2"
-          onClick={handleChange}
+          onChange={handleChange}
           value={formData.firstName}
         />
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           id="passwordInput"
           className="passwordInput form-control mb-2"
-          onClick={handleChange}
+          onChange={handleChange}
           value={formData.password}
         />
-        <input type="checkbox" id="checkBox" />
-        <label htmlFor="checkBox" className="ms-1">Show Password</label>
+        <input
+          type="checkbox"
+          id="toggleVisibility"
+          onChange={toggleVisibilityChange}
+        />
+        <label htmlFor="toggleVisibility" className="ms-1">
+          Show Password
+        </label>
       </form>
     </div>
   );
