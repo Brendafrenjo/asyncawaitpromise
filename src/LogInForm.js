@@ -25,16 +25,17 @@ export default function LogInForm() {
   }
 
   function toggleVisibilityChange() {
-    setShowPassword(true);
+    setShowPassword(!showPassword);
   }
 
   return (
     <div className="LogInForm">
-      <h1>Log In Form</h1>
-      {formInfo && "Information Sucessfully submitted"}
+      <h1 className="mt-5">Log In Form</h1>
+      {formInfo && <p>Information Successfully submitted</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          name="firstName"
           id="firstName"
           className="firstName form-control mb-2"
           onChange={handleChange}
@@ -42,6 +43,7 @@ export default function LogInForm() {
         />
         <input
           type={showPassword ? "text" : "password"}
+          name="password"
           id="passwordInput"
           className="passwordInput form-control mb-2"
           onChange={handleChange}
@@ -55,6 +57,12 @@ export default function LogInForm() {
         <label htmlFor="toggleVisibility" className="ms-1">
           Show Password
         </label>
+        <button
+          type="submit"
+          className="btn btn-success form-control mt-2 mb-5"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
