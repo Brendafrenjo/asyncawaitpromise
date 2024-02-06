@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.FaqSection h4 {
+.FaqSection h2 {
   font-size: 20px;
   color: hsl(292, 42%, 14%);
   font-weight: 700;
@@ -22,6 +22,7 @@
   font-size: 17px;
   font-weight: 600;
   line-height: 1.6;
+  text-align: start;
 }
 
 .FaqSection footer {
@@ -34,7 +35,7 @@
   display: block;
   margin: 0 auto;
   padding: 40px;
-  margin-top: 150px;
+  margin-top: 30px;
   border-radius: 10px;
   max-width: 700px;
   background-color: hsl(0, 0%, 100%);
@@ -97,7 +98,7 @@
   display: inline-block;
 }
 
-.faq.active h4 {
+.faq.active h2 {
   color: hsl(280, 80%, 55%);
 }
 

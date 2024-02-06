@@ -32,21 +32,35 @@ export default function FaqSection() {
 
   return (
     <div className="FaqSection">
-      <h1>FAQ</h1>
-      {faqData.map((faq, index) => {
-        <div key={index} className="faq" onClick={() => toggleFaq(index)}>
-          <div className="question">
-            <h2>{faq.question}</h2>
-            <span>
-              <i className="fa-solid fa-plus plus-icon"></i>
-              <i className="fa-solid fa-minus minus-icon"></i>
-            </span>
+      <div className="container">
+        <h1>FAQ</h1>
+        {faqData.map((faq, index) => (
+          <div
+            key={index}
+            className={`faq ${activeIndex === index ? "active" : ""}`}
+            onClick={() => toggleFaq(index)}
+          >
+            <div className="question">
+              <h2>{faq.question}</h2>
+              <span>
+                <i
+                  className={`fa-solid fa-plus plus-icon ${
+                    activeIndex === index ? "active" : ""
+                  }`}
+                ></i>
+                <i
+                  className={`fa-solid fa-minus minus-icon ${
+                    activeIndex === index ? "active" : ""
+                  }`}
+                ></i>
+              </span>
+            </div>
+            <div className="answer">
+              <p className="text-muted">{faq.answer}</p>
+            </div>
           </div>
-          <div className="answer">
-            <p>{faq.answer}</p>
-          </div>
-        </div>;
-      })}
+        ))}
+      </div>
     </div>
   );
 }
