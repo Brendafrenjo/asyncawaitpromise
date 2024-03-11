@@ -4,10 +4,12 @@ import LocalStorage from "./LocalStorage";
 import LogInForm from "./LogInForm";
 import LogIn from "./LogIn";
 import FaqSection from "./FaqSection";
+import Tabs from "./Tabs";
 
 export default function Home() {
   return (
     <div>
+      <Tabs />
       <FaqSection />
       <LogIn />
       <LogInForm />
